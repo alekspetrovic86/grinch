@@ -87,120 +87,120 @@ document.addEventListener('DOMContentLoaded', () => {
 // --------------------------------------------------------------------
 // ROOMS SWIPER
 // --------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section-room');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const sections = document.querySelectorAll('.section-room');
 
-    sections.forEach(section => {
-        const roomEl = section.querySelector('.room__slider') || section.querySelector('.swiper');
-        if (!roomEl) return;
+//     sections.forEach(section => {
+//         const roomEl = section.querySelector('.room__slider') || section.querySelector('.swiper');
+//         if (!roomEl) return;
 
-        const tabsEl = section.querySelector('.room__tabs') || section.querySelector('.swiper-pagination');
-        const vbarEl = section.querySelector('.room__vbar');
-        const hbarEl = section.querySelector('.room__hbar');
+//         const tabsEl = section.querySelector('.room__tabs') || section.querySelector('.swiper-pagination');
+//         const vbarEl = section.querySelector('.room__vbar');
+//         const hbarEl = section.querySelector('.room__hbar');
 
-        let labels = [];
-        try {
-            const raw = roomEl.dataset.roomLabels;
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed)) labels = parsed;
-            }
-        } catch (err) {
-            labels = [];
-        }
+//         let labels = [];
+//         try {
+//             const raw = roomEl.dataset.roomLabels;
+//             if (raw) {
+//                 const parsed = JSON.parse(raw);
+//                 if (Array.isArray(parsed)) labels = parsed;
+//             }
+//         } catch (err) {
+//             labels = [];
+//         }
 
-        const slideEls = roomEl.querySelectorAll('.swiper-slide');
-        if (!labels.length) {
-            labels = Array.from(slideEls).map((sl, i) => {
-                const titleEl = sl.querySelector('.room__title');
-                return titleEl ? titleEl.textContent.trim() : `Slide ${i + 1}`;
-            });
-        }
+//         const slideEls = roomEl.querySelectorAll('.swiper-slide');
+//         if (!labels.length) {
+//             labels = Array.from(slideEls).map((sl, i) => {
+//                 const titleEl = sl.querySelector('.room__title');
+//                 return titleEl ? titleEl.textContent.trim() : `Slide ${i + 1}`;
+//             });
+//         }
 
-        const total = Math.max(labels.length, slideEls.length, 1);
+//         const total = Math.max(labels.length, slideEls.length, 1);
 
-        const setProgress = (activeIndex) => {
-            const pct = total > 0 ? ((activeIndex + 1) / total) * 100 : 0;
-            if (vbarEl) vbarEl.style.height = pct + '%';
-            if (hbarEl) hbarEl.style.width = pct + '%';
-        };
+//         const setProgress = (activeIndex) => {
+//             const pct = total > 0 ? ((activeIndex + 1) / total) * 100 : 0;
+//             if (vbarEl) vbarEl.style.height = pct + '%';
+//             if (hbarEl) hbarEl.style.width = pct + '%';
+//         };
 
-        // === detect mobile ===
-        const isMobile = window.matchMedia('(max-width: 991px)').matches;
+//         // === detect mobile ===
+//         const isMobile = window.matchMedia('(max-width: 991px)').matches;
 
-        let paginationConfig;
-        if (isMobile) {
-            // Mobile: arrows + single label
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('room__mobile-nav');
+//         let paginationConfig;
+//         if (isMobile) {
+//             // Mobile: arrows + single label
+//             const wrapper = document.createElement('div');
+//             wrapper.classList.add('room__mobile-nav');
 
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'room__nav-btn room__nav-btn--prev';
-            prevBtn.innerHTML = '<i class="bi bi-chevron-left"></i>';
+//             const prevBtn = document.createElement('button');
+//             prevBtn.className = 'room__nav-btn room__nav-btn--prev';
+//             prevBtn.innerHTML = '<i class="bi bi-chevron-left"></i>';
 
-            const labelSpan = document.createElement('span');
-            labelSpan.className = 'room__nav-label';
-            labelSpan.textContent = labels[0] || '';
+//             const labelSpan = document.createElement('span');
+//             labelSpan.className = 'room__nav-label';
+//             labelSpan.textContent = labels[0] || '';
 
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'room__nav-btn room__nav-btn--next';
-            nextBtn.innerHTML = '<i class="bi bi-chevron-right"></i>';
+//             const nextBtn = document.createElement('button');
+//             nextBtn.className = 'room__nav-btn room__nav-btn--next';
+//             nextBtn.innerHTML = '<i class="bi bi-chevron-right"></i>';
 
-            wrapper.append(prevBtn, labelSpan, nextBtn);
-            tabsEl.replaceWith(wrapper);
+//             wrapper.append(prevBtn, labelSpan, nextBtn);
+//             tabsEl.replaceWith(wrapper);
 
-            paginationConfig = false; // disable default pagination
+//             paginationConfig = false; // disable default pagination
 
-            // We'll manually update the label later
-            roomEl.dataset.navLabelEl = labelSpan;
-            roomEl.dataset.prevBtnEl = prevBtn;
-            roomEl.dataset.nextBtnEl = nextBtn;
-        } else {
-            // Desktop: regular bullets with labels
-            paginationConfig = {
-                el: tabsEl || undefined,
-                clickable: true,
-                renderBullet: (index, className) => `<span class="${className}">${labels[index] || `Slide ${index + 1}`}</span>`,
-            };
-        }
+//             // We'll manually update the label later
+//             roomEl.dataset.navLabelEl = labelSpan;
+//             roomEl.dataset.prevBtnEl = prevBtn;
+//             roomEl.dataset.nextBtnEl = nextBtn;
+//         } else {
+//             // Desktop: regular bullets with labels
+//             paginationConfig = {
+//                 el: tabsEl || undefined,
+//                 clickable: true,
+//                 renderBullet: (index, className) => `<span class="${className}">${labels[index] || `Slide ${index + 1}`}</span>`,
+//             };
+//         }
 
-        const sw = new Swiper(roomEl, {
-            slidesPerView: 1,
-            loop: false,
-            speed: parseInt(roomEl.dataset.speed, 10) || 600,
-            autoHeight: true,
-            spaceBetween: parseInt(roomEl.dataset.spaceBetween, 10) || 100,
-            observer: true,
-            observeParents: true,
-            pagination: paginationConfig,
-            on: {
-                init(s) {
-                    setProgress(s.activeIndex);
-                    if (isMobile) {
-                        const labelEl = section.querySelector('.room__nav-label');
-                        if (labelEl) labelEl.textContent = labels[s.activeIndex] || '';
-                    }
-                },
-                slideChange(s) {
-                    setProgress(s.activeIndex);
-                    if (isMobile) {
-                        const labelEl = section.querySelector('.room__nav-label');
-                        if (labelEl) labelEl.textContent = labels[s.activeIndex] || '';
-                    }
-                },
-            },
-        });
+//         const sw = new Swiper(roomEl, {
+//             slidesPerView: 1,
+//             loop: false,
+//             speed: parseInt(roomEl.dataset.speed, 10) || 600,
+//             autoHeight: true,
+//             spaceBetween: parseInt(roomEl.dataset.spaceBetween, 10) || 100,
+//             observer: true,
+//             observeParents: true,
+//             pagination: paginationConfig,
+//             on: {
+//                 init(s) {
+//                     setProgress(s.activeIndex);
+//                     if (isMobile) {
+//                         const labelEl = section.querySelector('.room__nav-label');
+//                         if (labelEl) labelEl.textContent = labels[s.activeIndex] || '';
+//                     }
+//                 },
+//                 slideChange(s) {
+//                     setProgress(s.activeIndex);
+//                     if (isMobile) {
+//                         const labelEl = section.querySelector('.room__nav-label');
+//                         if (labelEl) labelEl.textContent = labels[s.activeIndex] || '';
+//                     }
+//                 },
+//             },
+//         });
 
-        if (isMobile) {
-            const prevBtn = section.querySelector('.room__nav-btn--prev');
-            const nextBtn = section.querySelector('.room__nav-btn--next');
-            prevBtn.addEventListener('click', () => sw.slidePrev());
-            nextBtn.addEventListener('click', () => sw.slideNext());
-        }
+//         if (isMobile) {
+//             const prevBtn = section.querySelector('.room__nav-btn--prev');
+//             const nextBtn = section.querySelector('.room__nav-btn--next');
+//             prevBtn.addEventListener('click', () => sw.slidePrev());
+//             nextBtn.addEventListener('click', () => sw.slideNext());
+//         }
 
-        setProgress(sw.activeIndex);
-    });
-});
+//         setProgress(sw.activeIndex);
+//     });
+// });
 
 
 // --------------------------------------------------------------------
