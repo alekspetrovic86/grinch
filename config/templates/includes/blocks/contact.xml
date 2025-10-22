@@ -1,0 +1,48 @@
+<properties xmlns="http://schemas.sulu.io/template/template"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <block name="blocks" default-type="contact">
+        <types>
+            <type name="contact">
+                <meta>
+                    <title lang="en">Contact</title>
+                </meta>
+
+                <properties>
+                    <property name="title" type="text_line">
+                        <meta>
+                            <title lang="en">Title</title>
+                        </meta>
+                    </property>
+
+                    <property name="subtitle" type="text_editor">
+                        <meta>
+                            <title lang="en">Subtitle</title>
+                        </meta>
+                    </property>
+
+                    <property name="location" type="location">
+                        <meta>
+                            <title lang="en">Location</title>
+                        </meta>
+                    </property>
+
+                    <property name="form" type="single_form_selection">
+                        <meta>
+                            <title lang="en">Form</title>
+                        </meta>
+                        <params>
+                            <param name="resourceKey" value="page"/>
+                        </params>
+                    </property>
+
+                    <property name="sectionId" type="text_line" colspan="3">
+                        <meta>
+                            <title lang="en">Section Id</title>
+                        </meta>
+                    </property>
+                </properties>
+            </type>
+        </types>
+    </block>
+</properties>

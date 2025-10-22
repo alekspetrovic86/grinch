@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <section class="section section-imprint">
+        {% if content.navLink|default %}
+            <div class="imprint-header">
+                <i class="bi bi-arrow-left"></i>
+                <a href="{{ content.navLink }}">{{ content.navTitle }}</a>
+            </div>
+        {% endif %}
+        <div class="container section-imprint-content">
+            <div class="section-imprint-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section__title">
+                            {% if content.title|default %}
+                                <h2>{{ content.title }}</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if content.description|default %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-imprint__content">
+                                {{ content.description|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="imprint-footer"></div>
+    </section>
+{% endblock %}

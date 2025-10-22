@@ -1,0 +1,17 @@
+sulu_admin:
+    email: "%env(SULU_ADMIN_EMAIL)%"
+    forms:
+        directories:
+            - "%kernel.project_dir%/config/forms"
+    lists:
+        directories:
+            - "%kernel.project_dir%/config/lists"
+sulu_core:
+    locales:
+        en: English
+        de: Deutsch
+        fr: French
+    translations:
+        - en
+        - de
+        - fr
