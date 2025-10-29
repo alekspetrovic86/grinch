@@ -8,13 +8,14 @@
     <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
     <cacheLifetime>86400</cacheLifetime>
     <meta>
-        <title lang="en">Default</title>
+        <title lang="sr">Homepage</title>
+        <title lang="en">Homepage</title>
     </meta>
     <properties>
         <property name="title" type="text_line" mandatory="true">
             <meta>
+                <title lang="sr">Naslov</title>
                 <title lang="en">Title</title>
-                <title lang="de">Titel</title>
             </meta>
             <params>
                 <param name="headline" value="true"/>
@@ -23,132 +24,27 @@
         </property>
         <property name="url" type="resource_locator" mandatory="true">
             <meta>
+                <title lang="sr">Putanja</title>
                 <title lang="en">Resourcelocator</title>
-                <title lang="de">Adresse</title>
             </meta>
             <tag name="sulu.rlp"/>
         </property>
 
-        <section name="header">
-            <meta>
-                <title lang="en">Header</title>
-            </meta>
-
-            <properties>
-                <block name="menuItems" default-type="item" >
-                    <meta>
-                        <title lang="en">Menu items</title>
-                    </meta>
-
-                    <types>
-                        <type name="item">
-                            <meta>
-                                <title lang="en">Nav item</title>
-                            </meta>
-
-                            <properties>
-                                <property name="name" type="text_line" colspan="6" mandatory="true">
-                                    <meta>
-                                        <title lang="en">Name</title>
-                                    </meta>
-                                </property>
-                                <property name="sectionId" type="text_line" colspan="3">
-                                    <meta>
-                                        <title lang="en">Section Id</title>
-                                    </meta>
-                                </property>
-                            </properties>
-                        </type>
-                    </types>
-                </block>
-
-                <property name="buttonText" type="text_line" colspan="6">
-                    <meta>
-                        <title lang="en">Button Text</title>
-                    </meta>
-                </property>
-                <property name="buttonLink" type="link" colspan="6">
-                    <meta>
-                        <title lang="en">Button Link</title>
-                    </meta>
-                </property>
-                <property name="buttonLinkToSection" type="text_line" colspan="3">
-                    <meta>
-                        <title lang="en">Button to Section Id</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
-
-        <section name="hero">
-            <meta>
-                <title lang="en">Hero</title>
-            </meta>
-
-            <properties>
-                <block name="heroItems" default-type="item" >
-                    <meta>
-                        <title lang="en">Hero items</title>
-                    </meta>
-
-                    <types>
-                        <type name="item">
-                            <meta>
-                                <title lang="en">Item block</title>
-                            </meta>
-
-                            <properties>
-                                <property name="backgroundImage" type="single_media_selection" mandatory="true">
-                                    <meta>
-                                        <title lang="en">Background Image</title>
-                                    </meta>
-                                </property>
-
-                                <property name="title" type="text_line">
-                                    <meta>
-                                        <title lang="en">Title</title>
-                                    </meta>
-                                </property>
-
-                                <property name="description" type="text_editor">
-                                    <meta>
-                                        <title lang="en">Description</title>
-                                    </meta>
-                                </property>
-                            </properties>
-                        </type>
-                    </types>
-                </block>
-
-                <property name="sectionId" type="text_line" colspan="3">
-                    <meta>
-                        <title lang="en">Section Id</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
-
         <section name="content">
 			<meta>
+				<title lang="sr">Kontent</title>
 				<title lang="en">Content</title>
-				<title lang="de">Inhalte</title>
 			</meta>
 			<properties>
-				<block name="blocks" default-type="overview" minOccurs="0">
+				<block name="blocks" default-type="hero" minOccurs="0">
 					<meta>
+						<title lang="sr">Blocks</title>
 						<title lang="en">Blocks</title>
-						<title lang="de">Blöcke</title>
 					</meta>
 					<types>
-                        <xi:include href="../includes/blocks/overview.xml"
-                                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
-                        <xi:include href="../includes/blocks/rooms.xml"
-                                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
-                        <xi:include href="../includes/blocks/comforts.xml"
+                        <xi:include href="../includes/blocks/hero.xml"
                                             xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
                         <xi:include href="../includes/blocks/gallery.xml"
-                                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
-                        <xi:include href="../includes/blocks/floorplans.xml"
                                             xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
                         <xi:include href="../includes/blocks/contact.xml"
                                             xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/sulu:block/sulu:types/sulu:type)"/>
@@ -156,78 +52,5 @@
 				</block>
 			</properties>
 		</section>
-
-        <section name="footer">
-            <meta>
-                <title lang="en">Footer</title>
-            </meta>
-
-            <properties>
-                <block name="footerItems" default-type="item">
-                    <meta>
-                        <title lang="en">Footer items</title>
-                    </meta>
-
-                    <types>
-                        <type name="item">
-                            <meta>
-                                <title lang="en">Footer item</title>
-                            </meta>
-
-                            <properties>
-                                <property name="title" type="text_line">
-                                    <meta>
-                                        <title lang="en">Title</title>
-                                    </meta>
-                                </property>
-                                <property name="description" type="text_editor">
-                                    <meta>
-                                        <title lang="en">Description</title>
-                                    </meta>
-                                </property>
-                                <property name="icon" type="single_media_selection">
-                                    <meta>
-                                        <title lang="en">Icon</title>
-                                    </meta>
-                                </property>
-                            </properties>
-                        </type>
-                    </types>
-                </block>
-
-                <block name="footerLinks" default-type="item">
-                    <meta>
-                        <title lang="en">Footer Links</title>
-                    </meta>
-
-                    <types>
-                        <type name="item">
-                            <meta>
-                                <title lang="en">Footer link item</title>
-                            </meta>
-
-                            <properties>
-                                <property name="title" type="text_line" colspan="6" mandatory="true">
-                                    <meta>
-                                        <title lang="en">Title</title>
-                                    </meta>
-                                </property>
-                                <property name="link" type="link" colspan="6" mandatory="true">
-                                    <meta>
-                                        <title lang="en">Link</title>
-                                    </meta>
-                                </property>
-                            </properties>
-                        </type>
-                    </types>
-                </block>
-
-                <property name="footerSectionId" type="text_line" colspan="3">
-                    <meta>
-                        <title lang="en">Section Id</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
     </properties>
 </template>

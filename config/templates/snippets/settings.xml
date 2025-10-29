@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>settings</key>
+
+    <meta>
+        <title lang="en">Settings</title>
+        <title lang="de">Settings</title>
+    </meta>
+
+    <areas>
+        <!-- @see https://docs.sulu.io/en/2.2/cookbook/default-snippets.html -->
+        <area key="webspace_settings">
+            <meta>
+                <title lang="en">Webspace Settings</title>
+                <title lang="de">Webspace Settings</title>
+            </meta>
+        </area>
+    </areas>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+
+            <tag name="sulu.node.name"/>
+        </property>
+
+        <section name="footer">
+			<meta>
+				<title lang="en">Footer</title>
+			</meta>
+            
+			<properties>
+				<property name="logo" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Logo</title>
+                    </meta>
+                </property>
+                
+				<property name="text" type="text_line">
+                    <meta>
+                        <title lang="en">Text</title>
+                    </meta>
+                </property>
+
+                <block name="footerLeftItems" default-type="item">
+                    <meta>
+                        <title lang="en">Footer Left</title>
+                    </meta>
+
+                    <types>
+                        <type name="item">
+                            <meta>
+                                <title lang="en">Footer item</title>
+                            </meta>
+
+                            <properties>
+                                <property name="title" type="text_line" colspan="6" mandatory="true">
+                                    <meta>
+                                        <title lang="en">Title</title>
+                                    </meta>
+                                </property>
+                                <property name="link" type="link" colspan="6" mandatory="true">
+                                    <meta>
+                                        <title lang="en">Link</title>
+                                    </meta>
+                                </property>
+                            </properties>
+                        </type>
+                    </types>
+                </block>
+
+                <block name="footerRightItems" default-type="item">
+                    <meta>
+                        <title lang="en">Footer right</title>
+                    </meta>
+
+                    <types>
+                        <type name="item">
+                            <meta>
+                                <title lang="en">Footer item</title>
+                            </meta>
+
+                            <properties>
+                                <property name="title" type="text_line" colspan="6" mandatory="true">
+                                    <meta>
+                                        <title lang="en">Title</title>
+                                    </meta>
+                                </property>
+                                <property name="link" type="link" colspan="6" mandatory="true">
+                                    <meta>
+                                        <title lang="en">Link</title>
+                                    </meta>
+                                </property>
+                            </properties>
+                        </type>
+                    </types>
+                </block>
+			</properties>
+		</section>
+    </properties>
+</template>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
 	<head>
+		{% set webspaceSettings = sulu_snippet_load_by_area('webspace_settings') %}
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +13,7 @@
 			/>
 		<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-		<title>Homepage</title>
+		<title>Monos</title>
 
 		{% block meta %}
 			{% include "@SuluWebsite/Extension/seo.html.twig" with {
@@ -33,7 +34,17 @@
 
 	</head>
 	<body>
+		{% block header %}
+			{% include 'includes/header.html.twig' %}
+		{% endblock %}
+
 		{% block content %}{% endblock %}
+
+		{% block footer %}
+			{% include 'includes/footer.html.twig' with {
+				"footerInfo": webspaceSettings.content ?? '',
+			} %}
+		{% endblock %}
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}

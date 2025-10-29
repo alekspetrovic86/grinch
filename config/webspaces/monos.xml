@@ -3,13 +3,12 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
     <!-- See: http://docs.sulu.io/en/latest/book/webspaces.html how to configure your webspace-->
-    <name>grinch.rs</name>
-    <key>grinch</key>
+    <name>monos.rs</name>
+    <key>monos</key>
     <localizations>
         <!-- See: http://docs.sulu.io/en/latest/book/localization.html how to add new localizations -->
-        <localization language="de" default="true"/>
+        <localization language="sr" default="true"/>
         <localization language="en" />
-        <localization language="fr" />
     </localizations>
     <default-templates>
         <default-template type="home">default</default-template>
@@ -24,46 +23,41 @@
         <contexts>
             <context key="main">
                 <meta>
+                    <title lang="sr">Glavna Navigacija</title>
                     <title lang="en">Main Navigation</title>
-                    <title lang="de">Hauptnavigation</title>
                 </meta>
             </context>
         </contexts>
     </navigation>
     <portals>
         <portal>
-            <name>grinch.rs</name>
-            <key>grinch</key>
+            <name>monos.rs</name>
+            <key>monos</key>
             <environments>
                 <environment type="prod">
                     <urls>
-                        <url language="en">grinch.rs/{localization}</url>
-                        <url language="en">www.grinch.rs/{localization}</url>
-                        <url language="de">grinch.rs/{localization}</url>
-                        <url language="de">www.grinch.rs/{localization}</url>
-                        <url language="fr">grinch.rs/{localization}</url>
-                        <url language="fr">www.grinch.rs/{localization}</url>
+                        <url language="sr">monos.rs</url>
+                        <url language="sr">www.monos.rs</url>
+                        <url language="en">monos.rs/{localization}</url>
+                        <url language="en">www.monos.rs/{localization}</url>
                     </urls>
                 </environment>
                 <environment type="stage">
                     <urls>
-                        <url language="de">{host}</url>
+                        <url language="sr">{host}</url>
                         <url language="en">{host}/{localization}</url>
-                        <url language="fr">{host}/{localization}</url>
                     </urls>
                 </environment>
                 <environment type="test">
                     <urls>
-                        <url language="de">{host}</url>
+                        <url language="sr">{host}</url>
                         <url language="en">{host}/{localization}</url>
-                        <url language="fr">{host}/{localization}</url>
                     </urls>
                 </environment>
                 <environment type="dev">
                     <urls>
+                        <url language="sr">localhost</url>
                         <url language="en">localhost/{localization}</url>
-                        <url language="de">localhost/{localization}</url>
-                        <url language="fr">localhost/{localization}</url>
                     </urls>
                 </environment>
             </environments>

@@ -7,14 +7,14 @@
     <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
     <cacheLifetime>604800</cacheLifetime>
     <meta>
+        <title lang="sr">Imprint</title>
         <title lang="en">Imprint</title>
-        <title lang="de">Standard</title>
     </meta>
     <properties>
         <property name="title" type="text_line" mandatory="true">
             <meta>
+                <title lang="sr">Title</title>
                 <title lang="en">Title</title>
-                <title lang="de">Titel</title>
             </meta>
             <params>
                 <param name="headline" value="true"/>
@@ -23,8 +23,8 @@
         </property>
         <property name="url" type="resource_locator" mandatory="true">
             <meta>
+                <title lang="sr">Resourcelocator</title>
                 <title lang="en">Resourcelocator</title>
-                <title lang="de">Adresse</title>
             </meta>
             <tag name="sulu.rlp"/>
         </property>
